@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-test-deploy:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18' # Specify your Node.js version
+        node-version: '18'
 
     - name: Install dependencies
       run: npm install
@@ -34,7 +34,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /path/to/your/app
-          git pull origin main 
+          cd /src/
+          git pull origin main
           npm install --production
-          pm2 restart your-app-name  
+          pm2 restart your-app-name
